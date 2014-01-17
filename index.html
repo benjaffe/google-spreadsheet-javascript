@@ -5,96 +5,12 @@
     <title>Song Tracker</title>
     <script type="text/javascript" src="jquery-1.4.4.min.js"></script>
     <script type="text/javascript" src="google-spreadsheet.js"></script>
-    <style>
-    html, body {font-family:sans-serif;margin:0;padding:0;}
-	.song-list {list-style:none;margin:0;padding:0;background:#888;width:20%;float:left;}
-	.song-list .song-list-item {background:#666;color:white;padding:5px;border-top:1px solid #888;border-bottom:1px solid #444;text-align:center;}
-	.song-list .song-list-item:hover {background:#333;}
-
-	.song-info {width:80%;min-height:100px;background: #DDD;float:right;}
-
-	.title, .artist {text-align: center;}
-	.title {font-size:20px;margin-top:10px;}
-	.artist {font-size:14px;font-style: italic;}
-	.key:before {content:"Key of: ";}
-	.instruments:before {content:"Instruments: ";}
-	.capo:before {content:"Capo: ";}
-	.readiness:before {content:"Readiness: ";}
-	.like:before {content:"Like: ";}
-	.categories:before {content:"Categories: ";}
-	.song-info :before {font-weight:bold;width: 7em;display: inline-block;text-align: right;padding-right:6px;}
-
-	.lyrics {white-space: pre;margin:10px 0;padding:5px;border:solid 1px rgba(0,0,0,0.3);}
-    </style>
+    <link rel="stylesheet" href="song-tracker-ui.css">
 </head>
 <body>
 	<ul id="songList" class="song-list"></ul>
 	<div id="songInfo" class="song-info"></div>
 
-    <script id='script'>
-    localStorage.clear();
-    var sample_url = "https://docs.google.com/spreadsheet/pub?key=0AvLPi2sP07zXdG5rbWRlQkdjR2E1UWdoZjl6Y2Q2R0E&output=html"
-    //"https://spreadsheets.google.com/pub?key=0Ago31JQPZxZrdHF2bWNjcTJFLXJ6UUM5SldEakdEaXc&hl=en&output=html";
-    var url_parameter = document.location.search.split(/\?url=/)[1]
-    var url = url_parameter || sample_url;
-    var googleSpreadsheet = new GoogleSpreadsheet();
-    var result, data, songList, songTemplate = [];
-    var numColumns = 10;
-    googleSpreadsheet.url(url);
-    googleSpreadsheet.load(function(a) {
-        result = a;
-        dataCallback();
-    });
-
-    var dataCallback = function(){
-    	data = result.data; //grab the 1D array of things in the spreadsheet
-    	songList = {}; //create a song list object
-    	
-    	//make a "song template" so we know what order to print the stuff later on
-    	for (var i = 0; i < numColumns; i++) {
-    		songTemplate.push(data[i]);
-    	};
-    	
-    	for(var i=numColumns; i<data.length; i+=numColumns) {
-    		var currSong = {}; //temporary song object, so we can build it
-    		for (var j = 0; j < numColumns; j++) { //loop over every song property
-    			currSong[data[j]] = data[i+j]; //set the properties (title, artist, etc) for the temporary song
-    		};
-
-    		songList[data[i]] = currSong; //put the song in the song list, with its title as the key
-    	}
-    	console.log(songList);
-    	var songListElem = $('#songList');
-
-    	$.each(songList, function(songName, obj){
-    		//create an li element for the song
-    		var songElem = $('<li class="song-list-item"><span class="song-name">'+songName+'</span><span class="song-bytext"> by </span><span class="artist">'+obj['artist']+'</span></li>');
-    		var songInfoElem = $('#songInfo');
-    		//get rid of nonexistant artist names
-    		if (obj['artist'] === '-') {
-    			songElem.find('.song-bytext, .artist').hide();
-    		}
-    		//add songs to the list
-    		songListElem.append(songElem);
-    		//when songs are clicked, copy their info into the content box
-    		songElem.click(function(){
-    			songInfoElem.empty();
-    			//spit the song attributes out in order
-    			for (var i = 0; i < songTemplate.length; i++) {
-    				var key = songTemplate[i];
-    				var value = obj[key];
-    				if (value === '-') continue; //don't output '-'
-    				value = value.replace('&#8629;','\n');
-    				songInfoElem.append('<div class='+key+'>'+value+'</div>');
-    			};
-
-    			
-    		});
-    	});
-
-
-    };
-
-    </script>
+    <script src="song-tracker.js"></script>
 </body>
 </html>
