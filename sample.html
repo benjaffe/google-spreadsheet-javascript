@@ -37,7 +37,8 @@
     </script>
     <script id='script'>
       localStorage.clear();
-      var sample_url = "https://spreadsheets.google.com/pub?key=0Ago31JQPZxZrdHF2bWNjcTJFLXJ6UUM5SldEakdEaXc&hl=en&output=html";
+      var sample_url = "https://docs.google.com/spreadsheet/pub?key=0AvLPi2sP07zXdG5rbWRlQkdjR2E1UWdoZjl6Y2Q2R0E&output=html"
+      //"https://spreadsheets.google.com/pub?key=0Ago31JQPZxZrdHF2bWNjcTJFLXJ6UUM5SldEakdEaXc&hl=en&output=html";
       var url_parameter = document.location.search.split(/\?url=/)[1]
       var url = url_parameter || sample_url;
       var googleSpreadsheet = new GoogleSpreadsheet();
