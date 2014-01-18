@@ -16,10 +16,21 @@ html, body {margin:0;padding:0;font-family: Helvetica, sans-serif;}
 	margin:0;
 	padding:0;
 	border-right:1px solid #CCC;
+	font-size: 0.8em;
+}
+.song-list-item.selected {
+	border-left:5px solid grey;
 }
 .song-list-item {
 	padding: 5px;
 }
+.song-ben {background:#BDF;}
+.song-masumi {background:#c6b6fa;}
+.song-benmasumi {background:orange;}
+.song-list-item .artist {
+	font-style: italic;
+}
+.song-list-item .artist:before {content:" - ";}
 .song-list-item:hover {
 	background: #DDD;
 }

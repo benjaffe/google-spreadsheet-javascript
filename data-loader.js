@@ -10,7 +10,7 @@ console.log(url);
 googleSpreadsheet.load(function(result) {
 	console.log(result);
 	if (result !== null) { //if successful:
-		var songList = {};
+		var songList = [];
 		headers = result.data.headers;
 		rows = result.data.rows;
 		//format data - loop over every row (ie. song)
@@ -22,7 +22,7 @@ googleSpreadsheet.load(function(result) {
 				songObj[headers[j]] = song[j]; //set the property in the song object
 			}
 			var title = songObj.title; //get the title of the song
-			songList[title] = songObj; //add the song to the song list
+			songList.push(songObj); //add the song to the song list
 		}
 		window.scopePointer.songs = songList; //put data in angularjs
 		window.scopePointer.$apply(); //tell angularjs to refresh

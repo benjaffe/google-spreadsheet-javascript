@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="songtrackerApp">
 <head>
     <meta charset="UTF-8">
     <title>Song Tracker</title>
@@ -10,10 +10,10 @@
     <!-- Our JavaScript Libraries, and our code -->
     <script src="lib/angular.min.js"></script>
 </head>
-<body ng-controller="SongListCtrl">
-	<input class="song-list-search" type="search" ng-model="search.$" autofocus>
+<body ng-controller="SongListCtrl" ng-keydown="handleKeyPress($event)">
+	<input class="song-list-search" type="search" ng-model="search.$" autofocus focus-me="focusInput">
     <ul class="song-list">
-        <li class="song-list-item" ng-repeat="song in songs" ng-click="showSong()">{{song.title}}</li>
+        <li class="song-list-item {{$index === currentSongIndex ? 'selected' : ''}}" ng-repeat="song in songs | orderBy:orderBy | filter:search" ng-click="showSong()" ng-class="{'B': 'song-ben', 'M': 'song-masumi', 'BM':'song-benmasumi'}[song.whose]"><span class="title">{{song.title}}</span><span ng-hide="!song.artist" class="artist">{{song.artist}}</span></li>
     </ul>
     
     <div class="current-song">
