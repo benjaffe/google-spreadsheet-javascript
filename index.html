@@ -11,7 +11,7 @@
     <script src="lib/angular.min.js"></script>
 </head>
 <body ng-controller="SongListCtrl">
-	<span></span>
+	<input class="song-list-search" type="search" ng-model="search.$" autofocus>
     <ul class="song-list">
         <li class="song-list-item" ng-repeat="song in songs" ng-click="showSong()">{{song.title}}</li>
     </ul>
