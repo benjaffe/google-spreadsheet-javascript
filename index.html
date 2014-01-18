@@ -9,20 +9,29 @@
     
     <!-- Our JavaScript Libraries, and our code -->
     <script src="lib/angular.min.js"></script>
-    <script src="lib/jquery-1.10.2.min.js"></script>
-    <script src="lib/google-spreadsheet.js"></script>
-    <script src="song-tracker.js"></script>
 </head>
 <body ng-controller="SongListCtrl">
 	<span></span>
-    <ul>
-        <li ng-repeat="song in songs" ng-click="showSong()">{{song.title}}</li>
+    <ul class="song-list">
+        <li class="song-list-item" ng-repeat="song in songs" ng-click="showSong()">{{song.title}}</li>
     </ul>
     
-    <div>
+    <div class="current-song">
         <h2>{{currentSong.title}}</h2>
-        {{currentSong}}
+        <div class="artist" ng-hide="!currentSong.artist"><em>{{currentSong.artist}}</em></div>
+        <div class="key" ng-hide="!currentSong.key">in the key of {{currentSong.key}}</div>
+        <div class="instruments" ng-hide="!currentSong.instruments">Instrumentation: {{currentSong.instruments}}</div>
+        <div class="capo" ng-hide="!currentSong.capo">Capo on {{currentSong.capo}}</div>
+        <div class="tuning" ng-hide="!currentSong.tuning">Tuning: {{currentSong.tuning}}</div>
+        <div class="readiness" ng-hide="!currentSong.readiness">Readiness: {{currentSong.readiness}}</div>
+        <div class="like" ng-hide="!currentSong.like">How much we like it: {{currentSong.like}}</div>
+        <div class="categories" ng-hide="!currentSong.categories">Categories: {{currentSong.categories}}</div>
+        <div class="lyrics" ng-hide="!currentSong.lyrics">{{currentSong.lyrics}}</div>
     </div>
     
+    <script src="lib/jquery-1.10.2.min.js"></script>
+    <script src="lib/google-spreadsheet.js"></script>
+    <script src="song-tracker.js"></script>
+    <script src="data-loader.js"></script>
 </body>
 </html>

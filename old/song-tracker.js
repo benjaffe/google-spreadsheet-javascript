@@ -1,9 +1,9 @@
 var result, data, songList, songTemplate = [];
 var infoMinHeight = 140;
 
-result = JSON.parse(localStorage.result); //back up our local copy
+// result = JSON.parse(localStorage.result); //back up our local copy
 localStorage.clear(); //I'm guessing this is necessary for the lib...?
-localStorage.result = JSON.stringify(result); //restore our local copy
+// localStorage.result = JSON.stringify(result); //restore our local copy
 var sample_url = "https://docs.google.com/spreadsheet/pub?key=0AvLPi2sP07zXdG5rbWRlQkdjR2E1UWdoZjl6Y2Q2R0E&output=html";
 //"https://spreadsheets.google.com/pub?key=0Ago31JQPZxZrdHF2bWNjcTJFLXJ6UUM5SldEakdEaXc&hl=en&output=html";
 var url_parameter = document.location.search.split(/\?url=/)[1];
