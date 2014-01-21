@@ -12,12 +12,14 @@
 </head>
 <body ng-controller="SongListCtrl" ng-keydown="handleKeyPress($event)">
 	<input class="song-list-search" type="search" ng-model="search.$" autofocus focus-me="focusInput">
+    <!-- <select style="position:absolute;background:#FCC;z-index:100;width:400px;height:200px;left:0;" ng-options="song as song.title for song in songs | orderBy:orderBy | filter:search" ng-model="selectedItem"></select> -->
+    <!-- <li class="song-list-item {{$index === currentSongIndex ? 'selected' : ''}}" ng-repeat="song in songs | orderBy:orderBy | filter:search" ng-click="showSong()" ng-class="{'B': 'song-ben', 'M': 'song-masumi', 'BM':'song-benmasumi'}[song.whose]" ng-model="selectedItem"><span class="title">{{song.title}}</span><span ng-hide="!song.artist" class="artist">{{song.artist}}</span></li> -->
     <ul class="song-list">
-        <li class="song-list-item {{$index === currentSongIndex ? 'selected' : ''}}" ng-repeat="song in songs | orderBy:orderBy | filter:search" ng-click="showSong()" ng-class="{'B': 'song-ben', 'M': 'song-masumi', 'BM':'song-benmasumi'}[song.whose]"><span class="title">{{song.title}}</span><span ng-hide="!song.artist" class="artist">{{song.artist}}</span></li>
+        <li class="song-list-item {{$index === pendingSongIndex ? ' pending' : ''}} {{$index === currentSongIndex ? ' selected' : ''}}" ng-repeat="song in (filteredSongs = (songs | orderBy:orderBy | filter:search))" ng-click="showSong(song)" ng-class="{'B': 'song-ben', 'M': 'song-masumi', 'BM':'song-benmasumi'}[song.whose]"><span class="title">{{song.title}}</span><span ng-hide="!song.artist" class="artist">{{song.artist}}</span></li>
     </ul>
-    
+    <!-- <div style="position:absolute;background:#FCC;z-index:100;width:400px;height:200px;right:0;">{{currentSong}}</div> -->
     <div class="current-song">
-        <h2>{{currentSong.title}}</h2>
+        <h2 class="title">{{currentSong.title}}</h2>
         <div class="artist" ng-hide="!currentSong.artist"><em>{{currentSong.artist}}</em></div>
         <div class="key" ng-hide="!currentSong.key">in the key of {{currentSong.key}}</div>
         <div class="instruments" ng-hide="!currentSong.instruments">Instrumentation: {{currentSong.instruments}}</div>

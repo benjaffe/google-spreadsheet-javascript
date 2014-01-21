@@ -6,9 +6,9 @@ var url_parameter = document.location.search.split(/\?url=/)[1];
 var url = url_parameter || sample_url;
 var googleSpreadsheet = new GoogleSpreadsheet();
 googleSpreadsheet.url(url);
-console.log(url);
+// console.log(url);
 googleSpreadsheet.load(function(result) {
-	console.log(result);
+	// console.log(result);
 	if (result !== null) { //if successful:
 		var songList = [];
 		headers = result.data.headers;
@@ -26,5 +26,6 @@ googleSpreadsheet.load(function(result) {
 		}
 		window.scopePointer.songs = songList; //put data in angularjs
 		window.scopePointer.$apply(); //tell angularjs to refresh
+		console.log('loaded');
 	}
 });

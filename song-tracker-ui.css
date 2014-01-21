@@ -18,8 +18,11 @@ html, body {margin:0;padding:0;font-family: Helvetica, sans-serif;}
 	border-right:1px solid #CCC;
 	font-size: 0.8em;
 }
-.song-list-item.selected {
+.song-list-item.pending {
 	border-left:5px solid grey;
+}
+.song-list-item.selected {
+	font-weight:bold;
 }
 .song-list-item {
 	padding: 5px;
@@ -43,6 +46,7 @@ html, body {margin:0;padding:0;font-family: Helvetica, sans-serif;}
 	left:210px;
 	
 }
+.current-song .title {margin-bottom: 0;}
 
 .current-song .lyrics {
 	font-size: 1.3em;
