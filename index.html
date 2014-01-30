@@ -22,6 +22,7 @@
         <h2 class="title">{{currentSong.title}}</h2>
         <div class="artist" ng-hide="!currentSong.artist"><em>{{currentSong.artist}}</em></div>
         <div class="key" ng-hide="!currentSong.key">in the key of {{currentSong.key}}</div>
+        <div class="chords" ng-hide="!currentSong.chords">{{currentSong.chords}}</div>
         <div class="instruments" ng-hide="!currentSong.instruments">Instrumentation: {{currentSong.instruments}}</div>
         <div class="capo" ng-hide="!currentSong.capo">Capo on {{currentSong.capo}}</div>
         <div class="tuning" ng-hide="!currentSong.tuning">Tuning: {{currentSong.tuning}}</div>
