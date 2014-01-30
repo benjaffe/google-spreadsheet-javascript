@@ -29,6 +29,6 @@ googleSpreadsheet.load(function(result) {
 		console.log('loaded');
 		if (JSON.stringify(window.blah) !== JSON.stringify(songList))
 			console.log('data updated from Google Spreadsheet');
-		console.log(songList);
+		// console.log(songList);
 	}
 });

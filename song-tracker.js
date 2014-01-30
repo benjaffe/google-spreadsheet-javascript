@@ -32,7 +32,7 @@ songtrackerApp.controller('SongListCtrl', function ($scope, $filter) {
 
 	$scope.handleKeyPress = function(ev) {
 		$scope.pressed = ev.which;
-		console.log(ev.which);
+		// console.log(ev.which);
 		var song_list_length = $scope.filteredSongs.length - 1;
 
 		if ((ev.which >= 64 && ev.which <= 90) || ev.which === 8) {
