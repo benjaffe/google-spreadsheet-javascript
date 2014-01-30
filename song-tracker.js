@@ -6,7 +6,8 @@ songtrackerApp.controller('SongListCtrl', function ($scope, $filter) {
 
 	$scope.orderBy = 'title';
 	// $scope.songs = $filter('filter')([],'search');
-	$scope.songs = [];
+	$scope.songs = localStorage.songs ? JSON.parse(localStorage.songs) : [];
+	window.blah = $scope.songs;
 
 	$scope.currentSongIndex = null;
 	$scope.pendingSongIndex = null;

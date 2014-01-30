@@ -1,4 +1,3 @@
-
 var rows, headers;
 //google spreadsheet stuff
 var sample_url = "https://docs.google.com/spreadsheet/pub?key=0AvLPi2sP07zXdG5rbWRlQkdjR2E1UWdoZjl6Y2Q2R0E&output=html";
@@ -26,6 +25,10 @@ googleSpreadsheet.load(function(result) {
 		}
 		window.scopePointer.songs = songList; //put data in angularjs
 		window.scopePointer.$apply(); //tell angularjs to refresh
+		localStorage.songs = JSON.stringify(songList);
 		console.log('loaded');
+		if (JSON.stringify(window.blah) !== JSON.stringify(songList))
+			console.log('data updated from Google Spreadsheet');
+		console.log(songList);
 	}
 });
